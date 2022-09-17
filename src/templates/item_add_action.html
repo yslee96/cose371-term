@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item add</title>
+</head>
+<body>
+{%if success:%}
+Successfully Added!
+{%else%}
+Invalid Request.
+{%endif%}<br>
+<form action="/item_return" method="post">
+    <input type="submit" name="send" value="return">
+    <input id="item_seller" type="hidden" name="user" value={{id}}>
+</form>
+</body>
+</html>

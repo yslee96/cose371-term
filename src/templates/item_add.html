@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>item add</title>
+</head>
+<body>
+CATEGORY LIST<br>
+    <table border="1">
+        <tbody>
+            {% for category in category_list %}
+            <tr>
+                <td>{{ category[0] }}</td>
+                <td>{{ category[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+    <form action="/item_adding" method="post">
+        <label for="item_code">Code:</label><br>
+        <input id="item_code" type="text" name="code" value=""><br>
+
+        <label for="item_name">Name:</label><br>
+        <input id="item_name" type="text" name="name" value=""><br>
+
+        <label for="item_price">Price:</label><br>
+        <input id="item_price" type="text" name="price" value=""><br>
+
+        <label for="item_stock">Stock:</label><br>
+        <input id="item_stock" type="text" name="stock" value=""><br>
+        <input id="item_seller" type="hidden" name="seller" value={{id}}>
+
+        <input type="submit" name="send" value="add"><br>
+        <input type="submit" name="send" value="cancel">
+    </form>
+</body>
+</html>

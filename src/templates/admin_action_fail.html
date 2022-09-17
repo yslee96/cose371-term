@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add category</title>
+</head>
+<body>
+{%if cause == 'num_invalid':%}    
+This code is not valid.
+{%elif cause == 'type_invalid':%}    
+This type is not valid.
+{%elif cause == 'num_collision':%}    
+The same code already exists.
+{%elif cause == 'type_collision':%}    
+The same type already exists.
+{%else%}  
+Invalid Request.
+{%endif%}  
+</form>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login_action</title>
+</head>
+<body>
+    {%if id =="admin":%}
+    <form action="/admin_function" method="post">
+        Admin function<br>
+        <input type="submit" name="send" value="add category">
+        <input type="submit" name="send" value="collect monthly fee">
+        <input type="submit" name="send" value="users info">
+        <input type="submit" name="send" value="trades info">
+        <hr style= "color:#999999; border-style:dotted">
+    </form>
+    {%endif%}
+    <table border="1">
+        <thead>
+            <th>popular category</th>
+            <th>best buyer</th>
+            <th>best seller</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{s_info[0][0]}}</td>
+                <td>{{s_info[1][0]}}</td>
+                <td>{{s_info[2][0]}}</td>
+            </tr>
+        </tbody>
+    </table>
+    current user: {{id}} /         
+    <a href = "{{ url_for('logout') }}">
+        <button type="submit">Logout</button>
+    </a><br>
+    balance: {{u_info[0][0]}} <br>
+    rating: {{u_info[0][1]}}<br>
+    <h3> ITEMS</h3>
+    <form action= "/item_add" method="post">
+        <input type="hidden" name="id" value={{id}}>
+        <input type="submit" name="send" value="add">
+    </form>
+    <table border="1">
+        <thead>
+            <th>code</th>
+            <th>name</th>
+            <th>price</th>
+            <th>stock</th>
+            <th>seller</th>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>{{ item[3] }}</td>
+                <td>{{ item[4] }}</td>
+                <td>
+                    <form action="/item_buy" method="post">
+                        <input type="submit" name="buy" value="buy">
+                        <input type="hidden" name="code" value="{{item[0]}}">
+                        <input type="hidden" name="name" value="{{item[1]}}">
+                        <input type="hidden" name="price" value="{{item[2]}}">
+                        <input type="hidden" name="stock" value="{{item[3]}}">
+                        <input type="hidden" name="seller" value="{{item[4]}}">
+                        <input type="hidden" name="id" value={{id}}>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

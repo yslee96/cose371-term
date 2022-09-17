@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>admin_page</title>
+</head>
+<body>
+    {%if function=='add category':%}
+    CATEGORY LIST<br>
+    <table border="1">
+        <tbody>
+            {% for category in categories %}
+            <tr>
+                <td>{{ category[0] }}</td>
+                <td>{{ category[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table><br>
+    <form action="/admin_action" method="post">
+        <label for="code_num">Code:</label><br>
+        <input id="code_num" type="text" name="code" value=""><br>
+        <label for="code_type">Type:</label><br>
+        <input id="code_type" type="text" name="type" value=""><br>
+        <input type="submit" name="send" value="add"><br>
+        <input type="submit" name="send" value="cancel">
+    </form> 
+    {%elif function=='collect monthly fee':%}
+    <h3>COLLECT MONTHLY FEE</h3><br><br> 
+    <form action="/admin_collect" method="post">
+        <label for="how_much">How much?:</label><br>
+        <input id="how_much" type="text" name="fee" value=""><br>
+        <input type="submit" name="send" value="collect"><br>
+        <input type="submit" name="send" value="cancel">
+    </form>    
+    {%elif function=='users info':%}
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>password</th>
+        </thead>
+
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {%else %}
+    <table border="1">
+        <thead>
+            <th>buyer</th>
+            <th>seller</th>
+            <th>code</th>
+            <th>trade_price</th>
+        </thead>
+
+        <tbody>
+            {% for trade in trades %}
+            <tr>
+                <td>{{ trade[0] }}</td>
+                <td>{{ trade[1] }}</td>
+                <td>{{ trade[2] }}</td>
+                <td>{{ trade[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {%endif%}
+</body>
+</html>

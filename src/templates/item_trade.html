@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>item trade</title>
+</head>
+<body>
+    Your balance: {{balance}} <br>
+    Your rating: {{rating}}<br><br>
+    Total price: {{t_price}}<br>
+    Discount price: {{dc_price}}<br>
+    <hr style= "color:#999999; border-style:dotted">
+    Final price: {{f_price}}<br>
+    <form action="/item_trade" method="post">
+        <input type="submit" name="send" value="confirm"><br>
+        <input type="submit" name="send" value="cancel">
+        <input type="hidden" name="buyer" value={{buyer}}>
+        <input type="hidden" name="seller" value={{seller}}>
+        <input type="hidden" name="buy_price" value={{f_price}}>
+        <input type="hidden" name="sell_price" value={{t_price}}>
+        <input type="hidden" name="item_code" value={{code}}>
+        <input type="hidden" name="item_name" value={{name}}>
+        <input type="hidden" name="stock" value={{stock}}>
+        <input type="hidden" name="quantity" value={{quantity}}>
+    </form>
+</body>
+</html>

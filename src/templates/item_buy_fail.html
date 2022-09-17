@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item trade</title>
+</head>
+<body>
+{%if cause == "same_id":%}
+Invalid Request : buyer's id cannot be the same as the seller's.<br>
+Please go back to the previous page and check your id once again.
+{%elif cause == "insufficient_stocks":%}
+Invalid Request : stock is not enough for your request.<br>
+Please go back to the previous page and check the stock once again.
+{%elif cause == "insufficient_stocks":%}
+Invalid Request : Insufficient balance.<br> 
+Please go back to the previous page and check your balance once again.
+{%else%}
+Invalid Request. Please go back to the previous page.
+{%endif%}<br>
+
+</body>
+</html>

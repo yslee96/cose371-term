@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>item buy</title>
+</head>
+<body>
+ITEM INFO<br>
+<table border="1">
+    <thead>
+        <th>code</th>
+        <th>name</th>
+        <th>price</th>
+        <th>stock</th>
+        <th>seller</th>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{code}}</td>
+            <td>{{name}}</td>
+            <td>{{price}}</td>
+            <td>{{stock}}</td>
+            <td>{{seller}}</td>
+        </tr>
+    </tbody>
+</table><br>
+Your balance: {{u_info[0][0]}}<br>
+Your rating: {{u_info[0][1]}}<br><br>
+<form action="/item_buying" method="post">
+    <label for="how_many">How many?:</label>
+    <input id="how_many" type="text" name="how_many" value=""><br>
+    <input type="submit" name="send" value="buy">
+    <input type="submit" name="send" value="cancel">
+    <input type="hidden" name="balance" value={{u_info[0][0]}}>
+    <input type="hidden" name="rating" value={{u_info[0][1]}}>
+    <input type="hidden" name="price" value={{price}}>
+    <input type="hidden" name="stock" value={{stock}}>
+    <input type="hidden" name="seller" value={{seller}}>
+    <input type="hidden" name="code" value={{code}}>
+    <input type="hidden" name="name" value={{name}}>
+    <input type="hidden" name="id" value={{id}}>
+</form>
+</body>
+</html>
