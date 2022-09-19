@@ -2,7 +2,7 @@ import psycopg2
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
-connect = psycopg2.connect("dbname=term user=postgres password=2015150220")
+connect = psycopg2.connect("host=postgres dbname=db user=postgres password=2015150220")
 cur = connect.cursor() 
 
 @app.route('/')

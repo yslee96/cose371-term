@@ -1,0 +1,33 @@
+version: "3.8" 
+services:
+  db:
+    image: postgres:14
+    container_name: postgres
+    restart: always 
+    networks:
+      - default
+    ports:
+      - "5431:5432" # HOST_PORT:CONTAINER_PORT로 host의 5432 포트를 container의 5432 포트와 매핑
+    environment:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "postgres" # 선택 속성으로 POSTGRES_PASSWORD와 함께 사용되며, POSTGRES_USER명으로 superuser가 생성됨(작성하지 않을 경우 postgres 이름으로 superuser 생성)
+      POSTGRES_PASSWORD: "2015150220" # 필수 속성으로 postgreSQL의 superuser password(비어있거나 선언되지 않으면 안됨)
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    volumes:
+      - ./term.sql:/docker-entrypoint-initdb.d/init.sql
+  app:
+    build:
+        context: .
+        dockerfile: ./Dockerfile-flask
+    expose:
+      - "5000"
+    ports:
+        - "5001:5000"
+    environment:
+      - FLASK_APP = app.py
+    env_file:
+      - env.list
+    restart: always
+    depends_on:
+      - db # db가 뜬 후에 app이 뜰 수 있도록 depends_on 설정
+
