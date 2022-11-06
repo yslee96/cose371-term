@@ -1,1 +1,1 @@
-# cose371-term
+# DB WEB Application
